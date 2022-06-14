@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 {/* Application Title */}
-const title = "Hacker Stories"
+const title = "Books"
 
 {/* List */}
 const list = [
@@ -28,6 +28,10 @@ function App() {
     return (
       <li key={item.objectId}>
         <a href={item.url} target="_blank">{item.title}</a>
+        <ul>
+          <li><i>Author: {item.author}</i></li>
+          <li><i>Category: {item.category}</i></li>
+        </ul>
       </li>
     );
   })
