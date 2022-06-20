@@ -24,18 +24,6 @@ const list = [
 
 {/* App component */}
 function App() {
-  const listItems = list.map(function(item){
-    return (
-      <li key={item.objectId}>
-        <a href={item.url} target="_blank">{item.title}</a>
-        <ul>
-          <li><i>Author: {item.author}</i></li>
-          <li><i>Category: {item.category}</i></li>
-        </ul>
-      </li>
-    );
-  })
-
   return (
     <div className="App">
       <header className="App-header">
@@ -43,11 +31,27 @@ function App() {
         <h3>
           {title}
         </h3>
-        <ul>
-          {listItems}
-        </ul>
+        <List />
       </header>
     </div>
+  );
+}
+
+function List(){
+  return (
+    <ul>
+      { list.map(function(item){
+        return (
+          <li key={item.objectId}>
+            <ul>
+              <li><a href={item.url} target="_blank">{item.title}</a></li>
+              <li><i>Author: {item.author}</i></li>
+              <li><i>Category: {item.category}</i></li>
+            </ul>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
