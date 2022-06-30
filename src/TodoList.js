@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import TodoListItem from './TodoListItem';
 
 {/* Array of todoList */}
 const todoList = [
@@ -20,7 +20,7 @@ const todoList = [
 ]
 
 {/* TodoList Component */}
-function TodoList() {
+export default function TodoList() {
     return (
         <div className='row col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-3 mx-3'>
             <div className='row col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 sub-header' style={{background: "#0879ea3d"}}>
@@ -30,9 +30,7 @@ function TodoList() {
                 {
                     todoList.map((item) => {
                         return (
-                            <li key={item.objectId}>
-                                <span className='h6'>{item.title}</span>
-                            </li>
+                            TodoListItem(item)
                         );
                     })
                 }
@@ -40,5 +38,3 @@ function TodoList() {
         </div>
     )
 }
-
-export default TodoList;

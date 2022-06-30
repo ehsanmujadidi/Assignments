@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  background: #ebeaf1 !important;
+}
+
+.content{
+  background: #efe9e9;   
+}
+
+.sub-header {
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(33,40,50,.125);
+}
+
+.sub-header span{
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.main-content *{
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 0.9rem;
+}
+
+.box-shadow-custom{
+  box-shadow: 0 2px 2px -3px grey !important;
+}
