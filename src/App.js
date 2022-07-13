@@ -8,9 +8,8 @@ import AddTodoForm from './AddTodoForm';
 
 {/* App component */}
 function App() {
-  {/** 1. Create New State */}
   const [todoList, setTodoList] = useState([]);
-
+  
   const onAddTodo = (value) => {
     var newTodoList = [{title : value, objectId: Date.now()}]   
     setTodoList(newTodoList)
@@ -32,7 +31,6 @@ function App() {
               <div className='sub-header'><span className="pb-3">ToDo</span></div>
               <div className="main-content p-3">
                 <AddTodoForm addTodo={addTodo} />
-                {/** 2. Pass state as a props */} 
                 <TodoList todoList={todoList} />
               </div> 
             </div>
@@ -42,5 +40,4 @@ function App() {
     </div>
   )
 }
-
 export default App;
