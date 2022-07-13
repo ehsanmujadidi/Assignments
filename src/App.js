@@ -8,11 +8,17 @@ import AddTodoForm from './AddTodoForm';
 
 {/* App component */}
 function App() {
-  const [newTodo, setNewTodo] = useState("");
+  {/** 1. Create New State */}
+  const [todoList, setTodoList] = useState([]);
 
   const onAddTodo = (value) => {
-    if(value!='')
-      setNewTodo(value)
+    var newTodoList = [{title : value, objectId: Date.now()}]   
+    setTodoList(newTodoList)
+  };
+
+  const addTodo = (value) => {
+    var newTodoList = [{title : value, objectId: Date.now()}]   
+    setTodoList([...todoList, ...newTodoList])
   };
 
   return (
@@ -25,13 +31,9 @@ function App() {
             <div className="col-10 col-xl-10 col-md-10 col-sm-12 content border p-2 py-3 card">
               <div className='sub-header'><span className="pb-3">ToDo</span></div>
               <div className="main-content p-3">
-                <AddTodoForm onAddTodo={onAddTodo} />
-                <TodoList />
-                <div className='row col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-3'>
-                  <ul className='list-group list-group-flush mt-3'>
-                    <li><p className='h6'>{newTodo}</p></li>
-                  </ul>
-                </div>
+                <AddTodoForm addTodo={addTodo} />
+                {/** 2. Pass state as a props */} 
+                <TodoList todoList={todoList} />
               </div> 
             </div>
           </div>  

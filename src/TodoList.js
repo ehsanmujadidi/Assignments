@@ -20,7 +20,9 @@ const todoList = [
 ]
 
 {/* TodoList Component */}
-export default function TodoList() {
+
+{/** 3. Add props */}
+export default function TodoList(props) {
     return (
         <div className='row col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-3 mx-3'>
             <div className='row col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 sub-header' style={{background: "#0879ea3d"}}>
@@ -28,10 +30,13 @@ export default function TodoList() {
             </div>
             <ul className='list-group list-group-flush mt-3'>
                 {
-                    todoList.map((item) => {
-                        return (
-                            TodoListItem(item)
-                        );
+                    // 4. Get todoList from props 
+                    props.todoList.map((item) => {
+                        
+                            return (
+                                TodoListItem(item)
+                            );
+                        
                     })
                 }
             </ul>
