@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar';
@@ -6,22 +6,33 @@ import Sidebar from './Sidebar';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
-{/* App component */}
-function App() {
-  const [todoList, setTodoList] = useState([]);
-  
-  const onAddTodo = (value) => {
-    var newTodoList = [{title : value, objectId: Date.now()}]   
-    setTodoList(newTodoList)
-  };
+{/** Custom Hook Component */}
+const useSemiPersistentState = () =>{
+  const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
 
+  React.useEffect(() => {
+    localStorage.setItem('savedTodoList', JSON.stringify(todoList));
+  }, [todoList])
+
+  return [todoList, setTodoList]
+}
+
+{/* App Component */}
+function App() {
+  
+  const [todoList, setTodoList] = useSemiPersistentState();
   const addTodo = (value) => {
-    var newTodoList = [{title : value, objectId: Date.now()}]   
-    setTodoList([...todoList, ...newTodoList])
-  };
+    setTodoList([
+      ...todoList, 
+      {
+        title : value, 
+        objectId: Date.now()
+      }
+    ])
+};
 
   return (
-    <div className="App">
+    <>
       <Navbar />
       <div className="mt-3 container-fluid">
         <div className="content-wrapper">
@@ -37,7 +48,7 @@ function App() {
           </div>  
         </div>
       </div>
-    </div>
+    </>
   )
 }
 export default App;

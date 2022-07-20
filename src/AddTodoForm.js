@@ -4,12 +4,6 @@ import { useState } from "react";
 {/* Add Form component */}
 function AddTodoForm(props) {
     
-    const [todoTitle, setTodoTitle] = useState("");
-    const handleTitleChange = (event) => {
-        const newTodoTitle = event.target.value;
-        //props.onAddTodo(newTodoTitle);
-    }
-
     const handleAddTodo = (event) => {
         event.preventDefault();
         const newTodoTitle = event.target.todoTitle.value;
@@ -23,7 +17,7 @@ function AddTodoForm(props) {
             </div>
             <form className='mt-3' onSubmit={handleAddTodo}>
                 <label htmlFor='todoTitle' className='h5'>Title: </label>
-                <input type="text" name="todoTitle" id='todoTitle' placeholder="Title" className='py-1' value={props.todoTitle} onChange={handleTitleChange} />
+                <input type="text" name="todoTitle" id='todoTitle' placeholder="Title" className='py-1' value={props.todoTitle} />
                 <button type="submit" className='btn btn-sm btn-primary mx-3'><i className="bi bi-plus-square-fill"></i> add</button>
                 <button type="reset" className='btn btn-sm btn-warning'><i className="bi bi-plus-square-fill"></i> Reset</button>
             </form>
