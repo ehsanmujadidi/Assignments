@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoListItem from './TodoListItem';
+import './TodoList.css';
 
 {/* Array of todoList */}
 const todoList = [
@@ -30,7 +31,7 @@ export default function TodoList(props) {
                 {
                     props.todoList.map((item) => {    
                         return (
-                            TodoListItem(item)
+                            <TodoListItem item={item} onRemoveTodo={props.onRemoveTodo} />
                         );
                     })
                 }

@@ -21,6 +21,7 @@ const useSemiPersistentState = () =>{
 function App() {
   
   const [todoList, setTodoList] = useSemiPersistentState();
+
   const addTodo = (value) => {
     setTodoList([
       ...todoList, 
@@ -29,7 +30,14 @@ function App() {
         objectId: Date.now()
       }
     ])
-};
+  };
+
+  const removeTodo = (id) => {  
+    const newTodoLists = todoList.filter(
+      list => id !== list.objectId
+    );
+    setTodoList(newTodoLists);
+  }
 
   return (
     <>
@@ -42,7 +50,7 @@ function App() {
               <div className='sub-header'><span className="pb-3">ToDo</span></div>
               <div className="main-content p-3">
                 <AddTodoForm addTodo={addTodo} />
-                <TodoList todoList={todoList} />
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
               </div> 
             </div>
           </div>  
