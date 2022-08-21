@@ -2,24 +2,6 @@ import React from 'react';
 import TodoListItem from './TodoListItem';
 import './TodoList.css';
 
-{/* Array of todoList */}
-const todoList = [
-    {
-        title: 'The Road to React',
-        category: 'Programming ',
-        url: 'https://www.roadtoreact.com/',
-        author: 'Robin Wieruch',
-        objectId: 0
-    },
-    {
-        title: 'Zero to One',
-        category: 'Startups & Bussines',
-        url: 'https://www.roadtoreact.com/',
-        author: 'Peter Thiel & Blake Masters',
-        objectId: 1
-    },
-]
-
 {/* TodoList Component */}
 export default function TodoList(props) {
     return (

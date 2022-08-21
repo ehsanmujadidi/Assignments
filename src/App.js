@@ -6,6 +6,7 @@ import Sidebar from './Sidebar';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
+
 {/* App Component */}
 function App() {
   
@@ -15,7 +16,31 @@ function App() {
 
   // NEW
   React.useEffect(() => {
-    const myPromise = new Promise((resolve, reject) => {
+    fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
+      method: 'GET',
+      headers: {
+        'Authorization' : 'Bearer ' + `${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      var prevArray = [];
+      data.records.map(item =>{
+        if(!prevArray.includes(item.id))
+          var newArray = [
+            ...prevArray, 
+            {
+              title : item.fields.Title, 
+              objectId: item.id
+            }
+          ]
+          prevArray = newArray;
+      })
+      setTodoList(prevArray)
+      setIsLoading(false);
+    });
+
+    {/*const myPromise = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({
           data :{
@@ -28,7 +53,7 @@ function App() {
       setIsLoading(false);
       setTodoList(result.data.todoListObj);
     });
-
+    */}
   }, [])
   
   //OLD
