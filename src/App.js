@@ -5,10 +5,10 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 {/* App Component */}
-function App() {
+export default function App() {
   
   const [todoList, setTodoList] = React.useState([]);
 
@@ -82,6 +82,12 @@ function App() {
 
   return (
     <>
+      <Router>
+        <Routes>
+          <Route path="/" exact />
+          <Route path="/NewPage" element={<NewPage />} />
+        </Routes>
+      </Router>
       <Navbar />
       <div className="mt-3 container-fluid">
         <div className="content-wrapper">
@@ -101,4 +107,7 @@ function App() {
     </>
   )
 }
-export default App;
+
+function NewPage() {
+  return <h1>New Todo List</h1>
+}
