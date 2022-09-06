@@ -11,7 +11,7 @@
     -ms-transition: width 0.25s ease, background 0.25s ease;
 }
 
-.list-group-item-custom {
+.listGroupItemCustom {
     position: relative;
     display: block;
     padding: 0.5rem 1rem;
@@ -21,7 +21,7 @@
     background: #ffffff;
 }
 
-.active-link {
+.activeLink {
     z-index: 2;
     color: rgb(66, 66, 66);
     background-color: #ffffff !important;

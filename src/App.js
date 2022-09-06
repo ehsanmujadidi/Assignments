@@ -1,6 +1,6 @@
 import React from "react";
 import logo from './logo.svg';
-import './App.css';
+import style from './App.module.css';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import TodoList from './TodoList';
@@ -93,9 +93,9 @@ export default function App() {
         <div className="content-wrapper">
           <div className="row px-3">
             <Sidebar />
-            <div className="col-10 col-xl-10 col-md-10 col-sm-12 content border p-2 py-3 card">
-              <div className='sub-header'><span className="pb-3">ToDo</span></div>
-              <div className="main-content p-3">
+            <div className={`col-10 col-xl-10 col-md-10 col-sm-12 border p-2 py-3 card ${style.content}`}>
+              <div className={style.subHeader}><span className="pb-3">ToDo</span></div>
+              <div className={`p-3 ${style.mainContent}`}>
                 <AddTodoForm addTodo={addTodo} />
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
                 {isLoading ? ( <p>Loading ...</p> ) : ""}
