@@ -13,7 +13,7 @@ export default function TodoList(props) {
                 {
                     props.todoList.map((item) => {    
                         return (
-                            <TodoListItem item={item} onRemoveTodo={props.onRemoveTodo} />
+                            <TodoListItem item={item} onRemoveTodo={props.onRemoveTodo} key={Math.random() * 300} />
                         );
                     })
                 }
