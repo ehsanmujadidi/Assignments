@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './TodoListItem.module.css'
+import PropTypes from 'prop-types';
 
 export default function TodoListItem(props) {
     if(props.item.title !== ""){
@@ -19,3 +20,7 @@ export default function TodoListItem(props) {
         )
     }
 }
+
+TodoListItem.propTypes = {
+    onAddTodo: PropTypes.func
+};

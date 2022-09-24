@@ -1,10 +1,9 @@
 import React from "react";
-import logo from './logo.svg';
 import style from './App.module.css';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
-import TodoList from './TodoList';
-import AddTodoForm from './AddTodoForm';
+import TodoList from './components/TodoList';
+import AddTodoForm from './components/AddTodoForm';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 {/* App Component */}

@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState } from "react";
 import InputWithLabel from './InputWithLabel';
-import style from './App.module.css';
+import style from './../App.module.css';
 import { BsTrash } from "react-icons/bs";
+import PropTypes from 'prop-types';
 
 {/* Add Form component */}
-function AddTodoForm(props) {
+export default function AddTodoForm(props) {
     
     const handleAddTodo = (event) => {
         event.preventDefault();
@@ -26,4 +27,6 @@ function AddTodoForm(props) {
     )
 }
 
-export default AddTodoForm;
+AddTodoForm.propTypes = {
+    onAddTodo: PropTypes.func
+};

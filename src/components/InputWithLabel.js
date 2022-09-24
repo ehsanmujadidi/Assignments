@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /** Reusable Input */
 export default function InputWithLabel(props){
@@ -15,3 +16,7 @@ export default function InputWithLabel(props){
         </>
     )
 }
+
+InputWithLabel.propTypes = {
+    onAddTodo: PropTypes.func
+};
