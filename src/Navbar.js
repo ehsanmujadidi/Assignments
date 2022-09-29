@@ -5,7 +5,7 @@ import style from'./Navbar.module.css';
 export default function Navbar() {
     return (
       <nav className={`navbar navbar-light ${style.navbarCustom}`}>
-        <img src="/hacker.png" alt="image" width='50' />
+        <img src="/todo.png" alt="image" width='120' />
       </nav>
     )
   }

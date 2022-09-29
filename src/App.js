@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import TodoList from './components/TodoList';
 import AddTodoForm from './components/AddTodoForm';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import * as Icon from 'react-bootstrap-icons';
 
 {/* App Component */}
 export default function App() {
@@ -29,45 +30,35 @@ export default function App() {
           var newArray = [
             ...prevArray, 
             {
-              title : item.fields.Title, 
-              objectId: item.id
+              objectId : item.id,
+              title    : item.fields.Title,
+              priority : item.fields.Priority,
+              status   : item.fields.Status, 
             }
           ]
           prevArray = newArray;
       })
+      //alert(prevArray.title)
+      prevArray.sort((objectA, objectB) => {
+        if(objectA.title < objectB.title)
+          return -1
+        if(objectA.title == objectB.title)
+          return 0
+        if(objectA.title > objectB.title)
+          return 1
+      })
       setTodoList(prevArray)
       setIsLoading(false);
+      
     });
-
-    {/*const myPromise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          data :{
-            todoListObj: JSON.parse(localStorage.getItem('savedTodoList'))
-          }
-        });
-      }, 2000);
-    });
-    myPromise.then((result) => {
-      setIsLoading(false);
-      setTodoList(result.data.todoListObj);
-    });
-    */}
   }, [])
-  
-  //OLD
-  React.useEffect(() => {
-    if(!isLoading)
-      localStorage.setItem('savedTodoList', JSON.stringify(todoList));
-  }, [todoList])
-  
   
   const addTodo = (value) => {
     setTodoList([
       ...todoList, 
       {
-        title : value, 
-        objectId: Date.now()
+        objectId: Date.now(),
+        title : value,
       }
     ])
   };
@@ -93,7 +84,9 @@ export default function App() {
           <div className="row px-3">
             <Sidebar />
             <div className={`col-10 col-xl-10 col-md-10 col-sm-12 border p-2 py-3 card ${style.content}`}>
-              <div className={style.subHeader}><span className="pb-3">ToDo</span></div>
+              <div className={style.subHeader}>
+                <span className="pb-3"><Icon.ListUl /> Todo List</span>
+              </div>
               <div className={`p-3 ${style.mainContent}`}>
                 <AddTodoForm addTodo={addTodo} />
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />

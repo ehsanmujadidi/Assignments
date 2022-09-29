@@ -59,7 +59,6 @@ body{
 }
 
 .mainContent *{
-  float: left;
   padding-left: 10px;
   padding-right: 10px;
   font-size: 0.9rem;

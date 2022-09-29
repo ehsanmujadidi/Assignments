@@ -4,6 +4,7 @@ import InputWithLabel from './InputWithLabel';
 import style from './../App.module.css';
 import { BsTrash } from "react-icons/bs";
 import PropTypes from 'prop-types';
+import * as Icon from 'react-bootstrap-icons';
 
 {/* Add Form component */}
 export default function AddTodoForm(props) {
@@ -20,7 +21,7 @@ export default function AddTodoForm(props) {
                 <InputWithLabel type='text' name='todoTitle' placeholder='Title' value={props.todoTitle} isFocused='isFocused' >
                     <strong>Title: </strong>
                 </InputWithLabel>
-                <button type="submit" className='btn btn-sm btn-primary mx-3'>add</button>
+                <button type="submit" className='btn btn-sm btn-primary mx-3'> Add </button>
                 <button type="reset" className='btn btn-sm btn-warning'>Reset</button>
             </form>
         </div>
