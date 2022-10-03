@@ -11,8 +11,8 @@ export default function InputWithLabel(props){
     }, [props.isFocused]);
     return(
         <>
-            <label htmlFor={props.name} className='h5'>{props.children} </label>
-            <input type={props.type} name={props.name} id={props.name} placeholder={props.placeholder} value={props.value} className='py-1' ref={inputRef} />
+            <label htmlFor={props.id} className='px-0'>{props.children}</label>
+            <input type={props.type} name={props.name} id={props.id} placeholder={props.placeholder} value={props.value} className='form-control' ref={inputRef} />
         </>
     )
 }

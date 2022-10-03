@@ -7,18 +7,16 @@ export default function TodoListItem(props) {
     if(props.item.title !== ""){
         return (
             <tr>
+                <td>{props.number}</td>
                 <td>
-                    <span className={style.ListItem}>{props.item.title}</span>
+                    <span>{props.item.title}</span>
                 </td>
                 <td>
-                    <span className={style.ListItem}>
+                    <span>
                         {props.item.priority==0 ? 'Low' : ''}
                         {props.item.priority==1 ? 'Medium' : ''}
                         {props.item.priority==2 ? 'High' : ''}
                     </span>
-                </td>
-                <td>
-                    <span className={style.ListItem}>{props.item.status}</span>
                 </td>
                 <td>
                     <Icon.Trash size={36} className={style.Cursor} onClick={() => props.onRemoveTodo(props.item.objectId)} />

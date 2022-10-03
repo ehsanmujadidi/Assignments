@@ -71,3 +71,59 @@ body{
 .list-custom{
   list-style-type: none !important;
 }
+
+/** Navbar */
+.navbarCustom {
+  background: #ffffff;
+  transition: width 0.25s ease;
+  -webkit-transition: width 0.25s ease;
+  -moz-transition: width 0.25s ease;
+  -ms-transition: width 0.25s ease;
+  color: #9b9b9b;
+  padding-left: 2.55rem;
+  padding-right: 2.55rem;
+  width: 100%;
+  height: 70px;
+  box-shadow: 0 2px 2px -3px grey !important;
+
+}
+
+/** Sidebar Menu */
+.sidebar{
+  min-height: calc(100vh - 70px);
+  font-family: "Roboto", sans-serif;
+  float: left;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0;
+  z-index: 11;
+  transition: width 0.25s ease, background 0.25s ease;
+  -webkit-transition: width 0.25s ease, background 0.25s ease;
+  -moz-transition: width 0.25s ease, background 0.25s ease;
+  -ms-transition: width 0.25s ease, background 0.25s ease;
+}
+
+.listGroupItemCustom {
+  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #212529;
+  text-decoration: none;
+  margin-bottom: 5px;
+  background: #ffffff;
+}
+
+.activeLink {
+  z-index: 2;
+  color: rgb(66, 66, 66);
+  background-color: #ffffff !important;
+  border-right: 3px solid #ff9100;
+}
+
+.linkTitle{
+  font-size: 0.9rem;
+}
+
+.linkIcon{
+  font-size: 1.1rem;
+}
