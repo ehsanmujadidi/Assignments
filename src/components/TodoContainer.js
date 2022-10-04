@@ -6,59 +6,94 @@ import * as Icon from 'react-bootstrap-icons';
 import style from './TodoContainer.module.css';
 
 export default function TodoContainer(props) {
-    const [todoList, setTodoList] = React.useState([]);
 
+    const [todoList, setTodoList] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
 
     React.useEffect(() => {
         fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
-        method: 'GET',
-        headers: {
-            'Authorization' : 'Bearer ' + `${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-        },
+            method: 'GET',
+            headers: {
+                'Authorization' : 'Bearer ' + `${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+            },
         })
         .then((response) => response.json())
         .then((data) => {
-        var prevArray = [];
-        data.records.map(item =>{
-            if(!prevArray.includes(item.id))
-            var newArray = [
-                ...prevArray, 
-                {
-                    objectId : item.id,
-                    title    : item.fields.Title,
-                    priority : item.fields.Priority,
-                    status   : item.fields.Status, 
-                }
-            ]
-            prevArray = newArray;
-        })
-        //alert(prevArray.title)
-        prevArray.sort((objectA, objectB) => {
-            if(objectA.title < objectB.title)
-                return -1
-            if(objectA.title == objectB.title)
-                return 0
-            if(objectA.title > objectB.title)
-                return 1
-        })
-        setTodoList(prevArray)
-        setIsLoading(false);
+            var prevArray = [];
+            data.records.map(item =>{
+                if(!prevArray.includes(item.id))
+                var newArray = [
+                    ...prevArray, 
+                    {
+                        objectId : item.id,
+                        title    : item.fields.Title,
+                        priority : item.fields.Priority,
+                        status   : item.fields.Status, 
+                    }
+                ]
+                prevArray = newArray;
+            })
+            //alert(prevArray.title)
+            prevArray.sort((objectA, objectB) => {
+                if(objectA.title < objectB.title)
+                    return -1
+                if(objectA.title == objectB.title)
+                    return 0
+                if(objectA.title > objectB.title)
+                    return 1
+            })
+            setTodoList(prevArray)
+            setIsLoading(false);
         
         });
     }, [])
     
     const addTodo = (value) => {
+        const data = {
+            "records": [{
+                "fields": {
+                    "Title": value,
+                }
+            }]
+        };
+        // Use API Fetch to pass data to insert
+        fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
+            method: 'POST',
+            headers: {
+                'Authorization' : 'Bearer ' + `${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then((response) => response.json())
+        .catch((error) => {
+            console.error('Error:', error);
+        });
         setTodoList([
-        ...todoList, 
-        {
-            objectId: Date.now(),
-            title : value,
-        }
+            ...todoList, 
+            {
+                objectId: Date.now(),
+                title : value,
+            }
         ])
     };
 
     const removeTodo = (id) => {  
+        const data = {
+            "records": [{"id": id, "deleted": true}]
+        };
+        // Use API Fetch to delete record
+        fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization' : 'Bearer ' + `${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+            },
+        })
+        .then((response) => response.json())
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
         const newTodoLists = todoList.filter(
             list => id !== list.objectId
         );

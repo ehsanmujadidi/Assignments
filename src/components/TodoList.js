@@ -13,9 +13,8 @@ export default function TodoList(props) {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th style={{width:'600px'}}>Title</th>
-                            <th>Priority</th>
-                            <th>Action</th>
+                            <th>Title</th>
+                            <th style={{width:'100px'}}>Action</th>
                         </tr>
                     </thead>
                     <tbody>

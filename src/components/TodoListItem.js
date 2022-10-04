@@ -12,13 +12,6 @@ export default function TodoListItem(props) {
                     <span>{props.item.title}</span>
                 </td>
                 <td>
-                    <span>
-                        {props.item.priority==0 ? 'Low' : ''}
-                        {props.item.priority==1 ? 'Medium' : ''}
-                        {props.item.priority==2 ? 'High' : ''}
-                    </span>
-                </td>
-                <td>
                     <Icon.Trash size={36} className={style.Cursor} onClick={() => props.onRemoveTodo(props.item.objectId)} />
                 </td>
             </tr>

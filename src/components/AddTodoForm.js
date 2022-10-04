@@ -16,29 +16,18 @@ export default function AddTodoForm(props) {
     }
 
     return (
-        <form className='mt-3' onSubmit={handleAddTodo}>
+        <form className='mt-3' onSubmit={handleAddTodo} id="addTodoForm">
             <div className="row">
                 <div className="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <div className="form-group">
-                        <InputWithLabel type='text' name='todoTitle' id='todoTitle' placeholder='Title' value={props.todoTitle} isFocused='' >
+                    <div className="form-group row">
+                        <InputWithLabel type='text' name='todoTitle' id='' placeholder='Title' value={props.todoTitle} isFocused='' >
                             Title:
                         </InputWithLabel>
                     </div>
                 </div>
                 <div className="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <div className="form-group">
-                        <label htmlFor="addTodoForm" className='px-0'>Priority:</label>
-                        <select className='form-control' id="addTodoForm">
-                            <option value="Low">Select...</option>
-                            <option value="High">High</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Low">Low</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <button type="submit" className='btn btn-sm btn-success mx-2 mt-4' id='submit'> Add </button>
-                    <button type="reset" className='btn btn-sm btn-warning mt-4'>Reset</button>
+                    <button type="submit" className='btn btn-sm btn-success mx-2' id='submit'> Add </button>
+                    <button type="reset" className='btn btn-sm btn-warning'>Reset</button>
                 </div>
             </div>
         </form>
