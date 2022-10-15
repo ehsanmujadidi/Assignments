@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import TodoListItem from './TodoListItem';
-import style from './TodoContainer.module.css';
 import PropTypes from 'prop-types';
 
-{/* TodoList Component */}
+/** ToDo list component */
 export default function TodoList(props) {
+    /** Set default value for x */
     let x = 0;
     return (
         <div className='row col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-3 mx-3'>

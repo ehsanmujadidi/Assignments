@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/** Reusable Input */
+/** Reusable input component */
 export default function InputWithLabel(props){
     const inputRef = React.useRef();
     React.useEffect(() => {

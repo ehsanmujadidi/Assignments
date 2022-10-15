@@ -6,11 +6,13 @@ import * as Icon from 'react-bootstrap-icons';
 import style from './TodoContainer.module.css';
 
 export default function TodoContainer(props) {
-
+ 
+    /** Call react hooks */
     const [todoList, setTodoList] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
 
     React.useEffect(() => {
+        /** Use API Fetch to list all records */
         fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, {
             method: 'GET',
             headers: {
@@ -48,6 +50,7 @@ export default function TodoContainer(props) {
         });
     }, [])
     
+    /** Component to add form data */
     const addTodo = (value) => {
         const data = {
             "records": [{
@@ -78,11 +81,12 @@ export default function TodoContainer(props) {
         ])
     };
 
+    /** Component to remove data from ToDo list */
     const removeTodo = (id) => {  
         const data = {
             "records": [{"id": id, "deleted": true}]
         };
-        // Use API Fetch to delete record
+        /** Use API Fetch to delete record */
         fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`, {
             method: 'DELETE',
             headers: {
@@ -104,9 +108,12 @@ export default function TodoContainer(props) {
         <div className="mt-3 container-fluid">
             <div className="content-wrapper">
                 <div className="row px-3">
+                    {/** Sidebar menu: start */}
                     <Sidebar />
+                    {/** Sidebar menu: end */}
                     <div className="col-12 col-xl-10 col-md-10 col-sm-12">
                         <div className="row">
+                            {/** ToDo form: start */}
                             <div className={`col-12 col-xl-12 col-md-12 col-sm-12 card ${style.content}`}>
                                 <div className={style.subHeader}>
                                     <span className="pb-2 pt-3"><Icon.Clipboard2PlusFill /> Add Activity</span>
@@ -115,6 +122,8 @@ export default function TodoContainer(props) {
                                     <AddTodoForm addTodo={addTodo} />
                                 </div>
                             </div>
+                            {/** ToDo form: end */}
+                            {/** ToDo list: start */}
                             <div className={`col-12 col-xl-12 col-md-12 col-sm-12 card mt-2 ${style.content}`}>
                                 <div className={style.subHeader}>
                                     <span className="pb-2 pt-3"><Icon.ListUl /> Todo List</span>
@@ -124,6 +133,7 @@ export default function TodoContainer(props) {
                                     {isLoading ? ( <p>Loading ...</p> ) : ""}
                                 </div> 
                             </div>
+                            {/** ToDo form: end */}
                         </div>
                     </div>
                 </div>  

@@ -3,6 +3,7 @@ import style from './TodoListItem.module.css'
 import PropTypes from 'prop-types';
 import * as Icon from 'react-bootstrap-icons';
 
+/**Component to list all ToDo items */
 export default function TodoListItem(props) {
     if(props.item.title !== ""){
         return (

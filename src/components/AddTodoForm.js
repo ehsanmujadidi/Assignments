@@ -6,9 +6,10 @@ import { BsTrash } from "react-icons/bs";
 import PropTypes from 'prop-types';
 import * as Icon from 'react-bootstrap-icons';
 
-{/* Add Form component */}
+/* Add ToDo form component */
 export default function AddTodoForm(props) {
-    
+
+    /** Function to handle ToDo form */
     const handleAddTodo = (event) => {
         event.preventDefault();
         const newTodoTitle = event.target.todoTitle.value;
@@ -16,7 +17,8 @@ export default function AddTodoForm(props) {
     }
 
     return (
-        <form className='mt-3' onSubmit={handleAddTodo} id="addTodoForm">
+        /** Add ToDo form: start */
+        <form className="mt-3" onSubmit={handleAddTodo} id="addTodoForm">
             <div className="row">
                 <div className="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div className="form-group row">
@@ -31,6 +33,7 @@ export default function AddTodoForm(props) {
                 </div>
             </div>
         </form>
+        /** Add ToDo form: end */
     )
 }
 
